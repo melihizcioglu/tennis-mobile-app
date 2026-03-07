@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Kullanıcı profili: sadece kendi dokümanını okuyup yazabilsin
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    // Planlar: herkes okuyabilsin (liste için), yazma yok
+    match /plans/{planId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+    // Oturumlar: oluşturan (antrenör) veya katılan (kullanıcı) erişebilsin
+    match /sessions/{sessionId} {
+      allow create: if request.auth != null;
+      allow read, update: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+    // Programlar: herkes okuyabilsin
+    match /programs/{programId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+  }
+}
