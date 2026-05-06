@@ -28,7 +28,7 @@ class ModeSelectScreen extends ConsumerWidget {
             const SizedBox(height: 32),
             ElevatedButton.icon(
               onPressed: () {
-                ref.read(appModeProvider.notifier).state = AppMode.user;
+                ref.read(appModeStateProvider.notifier).setMode(AppMode.user);
                 final user = ref.read(currentUserProvider);
                 if (user != null) {
                   context.go(AppRoutes.home);
@@ -39,18 +39,6 @@ class ModeSelectScreen extends ConsumerWidget {
               icon: const Icon(Icons.person),
               label: const Text('Kullanıcı'),
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-              ),
-            ),
-            const SizedBox(height: 16),
-            OutlinedButton.icon(
-              onPressed: () {
-                ref.read(appModeProvider.notifier).state = AppMode.coach;
-                context.go(AppRoutes.coachStart);
-              },
-              icon: const Icon(Icons.sports),
-              label: const Text('Antrenör'),
-              style: OutlinedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 20),
               ),
             ),

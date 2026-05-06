@@ -111,10 +111,14 @@ Release için imzalama: `android/app/build.gradle.kts` içinde `signingConfigs` 
 
 ## Proje Yapısı
 
-- `lib/core/` – Tema, router, flavor, sabitler
-- `lib/features/` – auth, home, profile, plans, qr, coach_session, splash
+- `lib/core/` – Tema, router, flavor, sabitler, **design** (tasarım token’ları)
+- `lib/features/` – auth, home, profile, plans, qr, coach_session, splash, match_mode, training_mode, challenge_mode
 - `lib/shared/` – Ortak modeller (UserProfile, Plan, TrainingSession)
+- `assets/` – Görseller, ikonlar, fontlar (tasarımcı çıktıları)
+- `design/` – Ekran mockup’ları (referans)
 - `firestore.rules` – Firestore güvenlik kuralları
+
+Tasarımcı ile çalışma ve tasarım entegrasyonu için **[DESIGN_INTEGRATION.md](DESIGN_INTEGRATION.md)** dosyasına bakın.
 
 ## Sunulabilir Hale Getirme
 
